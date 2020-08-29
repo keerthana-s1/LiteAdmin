@@ -34,7 +34,8 @@ app.post('/addmanyDB',checkAuthenticated, (req,res) => {
     console.log(req.body)
     req.body.forEach((dat)=> {
        console.log('each',dat)
-       Data(dat).save()
+       var temp = Data (dat)
+       temp.save();
     })
     
  })
