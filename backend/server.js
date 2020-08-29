@@ -30,6 +30,14 @@ app.post('/addDB',checkAuthenticated, (req,res) => {
    var data = Data (req.body)
    data.save()
 })
+app.post('/addmanyDB',checkAuthenticated, (req,res) => {
+    console.log(req.body)
+    req.body.forEach((dat)=> {
+       console.log('each',dat)
+       Data(dat).save()
+    })
+    
+ })
 
 app.get('/all',checkAuthenticated,async (req,res) => {
     activeUser = req.userId

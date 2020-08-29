@@ -16,6 +16,7 @@ export class NewDBComponent {
         year:""
         
     }
+    selectedFile :File
     number
    DB=[]
     c=0
@@ -44,5 +45,24 @@ export class NewDBComponent {
     });
    this.apiService.addDB(this.Field)
 }
+onFileChanged(event) {
+  this.selectedFile = event.target.files[0];
+  const fileReader = new FileReader();
+  fileReader.readAsText(this.selectedFile, "UTF-8");
+  fileReader.onload = () => {
+   //console.log(fileReader.result);
+  }
+  fileReader.onerror = (error) => {
+    //console.log(error);
+  }
+}
+
+onUpload() {
+  const fileReader = new FileReader();
+  fileReader.readAsText(this.selectedFile, "UTF-8");
+  fileReader.onload = () => {
+    console.log(fileReader.result);
+    this.apiService.addmanyDB(this.selectedFile)
+  }}
   
 }

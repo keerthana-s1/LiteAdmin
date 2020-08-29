@@ -27,6 +27,12 @@ export  class ApiService {
              //localStorage.setItem(this.TOKEN_KEY,res.token)
          })
      }
+     addmanyDB(DB) {
+        this.http.post<any>('http://localhost:3000/addmanyDB',DB).subscribe(res => {
+             console.log(res)
+             //localStorage.setItem(this.TOKEN_KEY,res.token)
+         })
+     }
 
      delrec(BMdata) {
         this.http.post<any>('http://localhost:3000/delete',BMdata).subscribe(res => {
