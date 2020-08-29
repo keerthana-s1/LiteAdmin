@@ -31,5 +31,14 @@ export class TableComponent {
       duration: 2000,
     });
   }
-  
+  download() {
+    var a = document.createElement("a");
+    var json_pre = JSON.stringify( this.records)
+    a.href = 'data:attachment/csv;charset=utf-8,' + encodeURI(json_pre);
+      a.target = '_blank';
+      a.download = 'sample.json';
+      document.body.appendChild(a);
+      a.click();
+    
+  }
 }
