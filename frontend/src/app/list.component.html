@@ -1,0 +1,27 @@
+
+
+<div *ngIf="authService.isAuthenticated">
+    {{ipAddress}}
+    <mat-expansion-panel hideToggle *ngFor =" let i of records" >
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{i.name}}
+            
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        _id : {{i._id}} <br>
+        Roll Number : {{i.rno}} <br>
+        Department : {{i.dept}} <br>
+        Year : {{i.year}} <br>
+        Age : {{i.age}} <br><br>
+        <button mat-icon-button [routerLink]="['/update',i._id]">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button  (click)="delete(i); " matTooltip="Delete" onClick="window.location.reload();">
+            <mat-icon>delete</mat-icon>
+          </button>
+      </mat-expansion-panel>
+      </div>
+       <div>
+       <login *ngIf="!authService.isAuthenticated"></login>
+       </div>
